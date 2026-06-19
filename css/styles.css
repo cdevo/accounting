@@ -769,6 +769,10 @@ html.has-anim [data-animate].in-view { opacity: 1; transform: none; }
   /* Hero: hide the trust bullets on phones */
   .hero-note { display: none; }
 
+  /* Section headings: left-align everything on mobile (no centered sections) */
+  .section-head.is-center { text-align: left; margin-inline: 0; }
+  .section-head.is-center .eyebrow { justify-content: flex-start; }
+
   .brand-logo { height: 38px; } /* trimmer wordmark on small screens */
 }
 
