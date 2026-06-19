@@ -18,10 +18,11 @@ Shared assets: `css/styles.css`, `js/main.js`, and `assets/`:
 
 | Asset | Use |
 |-------|-----|
-| `logo.png` | The R/A monogram (256px), shown in the header & footer |
-| `favicon.png` | 64px browser tab icon |
-| `logo-source.png` | Full-resolution monogram (source, not loaded by pages) |
-| `logo-lockup.png` | Full "Devona Accounting" lockup with wordmark (for print/social) |
+| `logo-wordmark.png` | Full "Devona Accounting" lockup (color) — header, on the cream bar |
+| `logo-wordmark-light.png` | Cream/reversed lockup — footer, on the dark background |
+| `favicon.png` | 64px browser tab icon (the R/A monogram) |
+| `logo-wordmark-source.png` | Full-resolution transparent wordmark (source) |
+| `logo.png`, `logo-source.png`, `logo-lockup.png` | Earlier monogram/lockup assets, kept for print/social |
 
 ## Viewing the site
 

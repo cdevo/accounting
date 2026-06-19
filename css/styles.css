@@ -117,7 +117,7 @@ h1, h2, h3, h4 {
   margin: 0 0 var(--s-2);
   overflow-wrap: break-word;
 }
-h1 { font-size: clamp(1.95rem, 6vw, 3.85rem); font-weight: 500; }
+h1 { font-size: clamp(2.25rem, 6vw, 3.85rem); font-weight: 500; }
 h2 { font-size: clamp(1.6rem, 4.4vw, 2.65rem); }
 h3 { font-size: 1.3rem; line-height: 1.25; }
 h4 { font-size: 1.05rem; }
@@ -268,8 +268,7 @@ strong { font-weight: 600; }
   letter-spacing: -0.01em;
 }
 .brand:hover { text-decoration: none; }
-.brand img { width: 42px; height: 42px; border-radius: 10px; object-fit: cover; }
-.brand-accent { color: var(--gold-deep); }
+.brand-logo { height: 48px; width: auto; display: block; }
 
 .nav-links { display: flex; align-items: center; gap: var(--s-3); list-style: none; }
 .nav-links a {
@@ -696,10 +695,8 @@ strong { font-weight: 600; }
   padding-bottom: var(--s-4);
   border-bottom: 1px solid var(--hairline-dark);
 }
-.site-footer .brand { color: #FCFAF4; margin-bottom: var(--s-2); }
-/* logo keeps its cream ground; on the dark footer it reads as a tidy badge */
-.site-footer .brand img { box-shadow: 0 0 0 1px rgba(243,239,230,0.18); }
-.site-footer .brand-accent { color: var(--gold-soft); } /* lighter gold for dark bg */
+.site-footer .brand { margin-bottom: var(--s-3); }
+.site-footer .brand-logo { height: 44px; } /* cream reversed wordmark on dark */
 .site-footer h4 { font-family: var(--font-sans); color: var(--on-dark); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: var(--s-2); font-weight: 700; }
 .site-footer a { color: var(--on-dark-muted); }
 .site-footer a:hover { color: #FCFAF4; }
@@ -768,6 +765,11 @@ html.has-anim [data-animate].in-view { opacity: 1; transform: none; }
   body { padding-bottom: 72px; }
   .step { grid-template-columns: auto 1fr; gap: var(--s-3); }
   .form-card, .panel { padding: var(--s-4); }
+
+  /* Hero: hide the trust bullets on phones */
+  .hero-note { display: none; }
+
+  .brand-logo { height: 38px; } /* trimmer wordmark on small screens */
 }
 
 /* ---------- Reduced motion ---------- */
