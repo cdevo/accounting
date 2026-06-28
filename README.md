@@ -47,9 +47,9 @@ bracketed placeholders still need real values — find-and-replace them across a
 | Placeholder | Meaning |
 |-------------|---------|
 | `[OWNER_NAME]` | Owner name (About page intro) |
-| `[CITY_OR_SERVICE_AREA]` | City / service area (the word "Texas" is already next to it) |
+| `[CITY_OR_SERVICE_AREA]` | Service area, e.g. serving local clients in the greater Huntsville and Madisonville, Texas area and remote clients nationwide |
 | `[PHONE_NUMBER]` | Phone (also used in `tel:` links) |
-| `[EMAIL_ADDRESS]` | Email (also used in `mailto:` links) |
+| `info@devonaaccounting.com` | Email (also used in `mailto:` links) |
 | `[CONTACT_FORM_DESTINATION]` | Where the contact form should send to (see below) |
 
 Quick way to find them all:

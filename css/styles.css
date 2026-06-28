@@ -679,6 +679,83 @@ strong { font-weight: 600; }
 }
 .form-success.show { display: block; }
 
+/* ---------- Consultation modal ---------- */
+body.modal-open { overflow: hidden; }
+
+.consultation-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  padding: clamp(0.75rem, 3vw, 2rem);
+}
+.consultation-modal.is-open {
+  display: grid;
+  place-items: center;
+}
+.consultation-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 35, 31, 0.68);
+  backdrop-filter: blur(6px);
+}
+.consultation-modal__panel {
+  position: relative;
+  width: min(1080px, 100%);
+  max-height: min(92vh, 920px);
+  overflow: auto;
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  box-shadow: 0 30px 80px rgba(23, 28, 26, 0.32);
+}
+.consultation-modal__header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-4) var(--s-5);
+  background: rgba(252, 250, 244, 0.96);
+  border-bottom: 1px solid var(--hairline);
+}
+.consultation-modal__header .eyebrow {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--gold-deep);
+}
+.consultation-modal__header h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+}
+.consultation-modal__body {
+  padding: var(--s-5);
+}
+.consultation-modal__info {
+  display: grid;
+  align-content: start;
+}
+.modal-close {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 50%;
+  background: var(--card-warm);
+  color: var(--pine);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal-close:hover,
+.modal-close:focus {
+  outline: none;
+  background: var(--pine);
+  color: var(--on-dark);
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   background:
@@ -765,6 +842,32 @@ html.has-anim [data-animate].in-view { opacity: 1; transform: none; }
   body { padding-bottom: 72px; }
   .step { grid-template-columns: auto 1fr; gap: var(--s-3); }
   .form-card, .panel { padding: var(--s-4); }
+
+  .consultation-modal {
+    padding: 0;
+    align-items: stretch;
+  }
+  .consultation-modal.is-open { display: block; }
+  .consultation-modal__panel {
+    width: 100%;
+    min-height: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  .consultation-modal__header {
+    padding: var(--s-3) var(--s-4);
+  }
+  .consultation-modal__body {
+    padding: var(--s-4);
+    padding-bottom: calc(var(--s-5) + env(safe-area-inset-bottom));
+  }
+  .consultation-modal__info .info-card .value {
+    font-size: 0.98rem;
+  }
+  .modal-close {
+    width: 38px;
+    height: 38px;
+  }
 
   /* Hero: hide the trust bullets on phones */
   .hero-note { display: none; }
