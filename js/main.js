@@ -126,7 +126,7 @@
       '      </div>',
       '      <div class="info-card">',
       '        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>',
-      '        <div><div class="label">Service Area</div><div class="value">Serving local clients in the greater Huntsville and Madisonville, Texas area and remote clients nationwide</div></div>',
+      '        <div><div class="label">Service Area</div><div class="value">Proudly serving local clients in Walker, Madison, Montgomery, and surrounding Texas counties, and remote clients nationwide</div></div>',
       '      </div>',
       '      <div class="info-card">',
       '        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>',
