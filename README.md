@@ -50,7 +50,7 @@ bracketed placeholders still need real values — find-and-replace them across a
 | `[CITY_OR_SERVICE_AREA]` | Service area, e.g. serving local clients in the greater Huntsville and Madisonville, Texas area and remote clients nationwide |
 | `[PHONE_NUMBER]` | Phone (also used in `tel:` links) |
 | `info@devonaaccounting.com` | Email (also used in `mailto:` links) |
-| `[CONTACT_FORM_DESTINATION]` | Where the contact form should send to (see below) |
+| `https://formsubmit.co/ajax/admin@devonaaccounting.com` | Contact form destination |
 
 Quick way to find them all:
 
@@ -60,15 +60,12 @@ grep -rn "\[OWNER_NAME\]\|\[CITY_OR_SERVICE_AREA\]\|\[PHONE_NUMBER\]\|\[EMAIL_AD
 
 ## Contact form
 
-The form currently runs **front-end only**: it validates the fields and shows a
-success message, but does **not** send anything yet. To make it live:
+The form submits through FormSubmit's AJAX endpoint and sends requests to
+`admin@devonaaccounting.com`, with `billydevona@gmail.com` copied for testing.
 
-1. Create an account with a form service such as [Formspree](https://formspree.io)
-   (or similar) and get an endpoint URL.
-2. Put that URL in the `data-form-endpoint="..."` attribute on the
-   `<form id="contact-form">` in `contact.html`.
-3. In `js/main.js`, find the `TODO: wire to Formspree / endpoint` comment inside
-   `initForm()` and uncomment the `fetch(...)` example.
+FormSubmit may send an activation email to `admin@devonaaccounting.com` the
+first time the form is submitted. Approve that email to start receiving
+submissions.
 
 ## Animations
 

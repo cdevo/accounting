@@ -106,10 +106,18 @@
 
           <!-- Contact form -->
           <div data-animate>
-            <form class="form-card" id="contact-form" novalidate data-form-endpoint="[CONTACT_FORM_DESTINATION]">
+            <form class="form-card" id="contact-form" novalidate data-form-endpoint="https://formsubmit.co/ajax/admin@devonaaccounting.com">
               <div class="form-success" id="form-success" role="status">
                 Thank you — your message has been received. We'll review your request and follow up with the appropriate next step.
               </div>
+              <div class="form-error" role="alert">
+                Sorry, your message could not be sent. Please try again or email us directly.
+              </div>
+              <input type="hidden" name="_subject" value="New Devona Accounting consultation request" />
+              <input type="hidden" name="_cc" value="billydevona@gmail.com" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" />
 
               <div class="field">
                 <label for="name">Name <span class="req" aria-hidden="true">*</span></label>

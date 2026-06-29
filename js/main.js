@@ -133,8 +133,14 @@
       '        <div><div class="label">Availability</div><div class="value">By appointment</div></div>',
       '      </div>',
       '    </aside>',
-      '    <form class="form-card js-contact-form" novalidate data-form-endpoint="[CONTACT_FORM_DESTINATION]">',
+      '    <form class="form-card js-contact-form" novalidate data-form-endpoint="https://formsubmit.co/ajax/admin@devonaaccounting.com">',
       '      <div class="form-success" role="status">Thank you — your message has been received. We\'ll review your request and follow up with the appropriate next step.</div>',
+      '      <div class="form-error" role="alert">Sorry, your message could not be sent. Please try again or email us directly.</div>',
+      '      <input type="hidden" name="_subject" value="New Devona Accounting consultation request" />',
+      '      <input type="hidden" name="_cc" value="billydevona@gmail.com" />',
+      '      <input type="hidden" name="_template" value="table" />',
+      '      <input type="hidden" name="_captcha" value="false" />',
+      '      <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" />',
       '      <div class="field"><label for="modal-name">Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="modal-name" name="name" autocomplete="name" required /><div class="error-msg">Please enter your name.</div></div>',
       '      <div class="field-row">',
       '        <div class="field"><label for="modal-email">Email <span class="req" aria-hidden="true">*</span></label><input type="email" id="modal-email" name="email" autocomplete="email" required /><div class="error-msg">Please enter a valid email address.</div></div>',
@@ -230,10 +236,23 @@
 
     forms.forEach(function (form) {
       var success = form.querySelector(".form-success");
+      var error = form.querySelector(".form-error");
+      var submit = form.querySelector('button[type="submit"]');
+
+      function setSubmitting(on) {
+        if (!submit) return;
+        if (!submit.dataset.originalText) submit.dataset.originalText = submit.textContent;
+        submit.disabled = !!on;
+        submit.textContent = on ? "Sending..." : submit.dataset.originalText;
+      }
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         var ok = true;
+        var endpoint = form.getAttribute("data-form-endpoint");
+
+        if (success) success.classList.remove("show");
+        if (error) error.classList.remove("show");
 
         // Required fields
         form.querySelectorAll("[required]").forEach(function (el) {
@@ -255,27 +274,34 @@
           return;
         }
 
-      /* -----------------------------------------------------------------
-         PLACEHOLDER SUBMISSION — front-end only.
-         No data is sent anywhere yet. To make this live, POST the form
-         to your service (e.g. Formspree) using the endpoint configured
-         on the <form data-form-endpoint="..."> attribute.
-
-         Example (uncomment + add your endpoint):
-         var endpoint = form.getAttribute("data-form-endpoint");
-         fetch(endpoint, { method: "POST", body: new FormData(form),
-           headers: { Accept: "application/json" } })
-           .then(function () { ... });
-         TODO: wire to Formspree / endpoint
-      ----------------------------------------------------------------- */
-
-        if (success) {
-          success.classList.add("show");
-          success.setAttribute("tabindex", "-1");
-          success.focus();
-          success.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "center" });
+        if (!endpoint || endpoint.indexOf("[") !== -1) {
+          if (error) error.classList.add("show");
+          return;
         }
-        form.reset();
+
+        setSubmitting(true);
+        fetch(endpoint, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" }
+        }).then(function (response) {
+          if (!response.ok) throw new Error("Form submission failed");
+          if (success) {
+            success.classList.add("show");
+            success.setAttribute("tabindex", "-1");
+            success.focus();
+            success.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "center" });
+          }
+          form.reset();
+        }).catch(function () {
+          if (error) {
+            error.classList.add("show");
+            error.setAttribute("tabindex", "-1");
+            error.focus();
+          }
+        }).finally(function () {
+          setSubmitting(false);
+        });
       });
 
       // Clear error state as the user fixes a field

@@ -678,6 +678,23 @@ strong { font-weight: 600; }
   font-weight: 500;
 }
 .form-success.show { display: block; }
+.form-error {
+  display: none;
+  background: rgba(163,51,31,0.09);
+  border: 1px solid rgba(163,51,31,0.35);
+  color: #7d2415;
+  border-radius: var(--r-sm);
+  padding: var(--s-3);
+  margin-bottom: var(--s-3);
+  font-weight: 500;
+}
+.form-error.show { display: block; }
+.honeypot { display: none !important; }
+button[disabled] {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
 
 /* ---------- Consultation modal ---------- */
 body.modal-open { overflow: hidden; }
